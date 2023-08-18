@@ -283,12 +283,23 @@ for i in {5..50..5}; do
 done
 ```
 
-### Reading lines
+### Reading lines from text
 
 ```bash
 while read -r line; do
   echo "$line"
 done <file.txt
+```
+
+### Reading lines from variable
+
+```bash
+text=$(cat "$file")
+nb=1
+while read -r line; do
+	echo "$nb : $line"
+	nb=$(($nb+1))
+done < <(printf "%s\n" "$text")
 ```
 
 ### Forever
